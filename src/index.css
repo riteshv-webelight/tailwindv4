@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* v4 wires `dark:` to prefers-color-scheme by default. Re-point it at a class so
+   the toggle in section 7 can switch the page by adding "dark" to <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Brand color. The ramp in section 1 varies only its lightness. */
+  --color-brand: oklch(62% 0.2 260);
+  --color-brand-ink: oklch(30% 0.12 260);
+
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Base: large type, high contrast. */
+@layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+  body {
+    @apply bg-white text-slate-900 text-xl antialiased;
+    @apply dark:bg-slate-950 dark:text-slate-100;
+  }
+  code, pre {
+    font-variant-ligatures: none;
+  }
+}
